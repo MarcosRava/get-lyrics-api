@@ -2,7 +2,14 @@ exports.removeDiacritics = removeDiacritics;
 exports.toDashed = toDashed;
 exports.toDashedUrl = toDashedUrl;
 exports.reaplaceAll = reaplaceAll;
+exports.camelize = camelize;
 
+function camelize(str) {
+  return str.replace (/(?:^|[-_])(\w)/g, function (_, c) {
+    return c ? c.toUpperCase () : '';
+  });
+}      
+      
 function reaplaceAll(str, find, replaceWith){
 return str.replace(new RegExp(find, 'gi'), replaceWith);
 }
