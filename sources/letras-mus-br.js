@@ -1,5 +1,6 @@
 var request = require("request");
 var cheerio = require("cheerio");
+var Song = require('../models/song.js');
 var _util = require('../util');
 var url = require('url');
 var mainUrl = "http://letras.mus.br/";
@@ -32,9 +33,15 @@ function getSecond(artist, song, $, $el, callback) {
     request(secondUrl, function(err, response, html) {
       if(err || response.statusCode === 404 ) return callback(err, response.statusCode);
       $ = cheerio.load(html);
+      var artist = $('a[itemprop="byArtist"]').text().trim();
       $('#div_letra > br').replaceWith('\n');
       var lyrics = $("#div_letra").text();
       var title = $('h1[itemprop="name"]').text().trim();
-      callback(null, 200, title + '\n\n' + lyrics);
+      var song = new Song({
+        name: title,
+        artistName: artist,
+        lyric: lyrics
+      });
+      callback(null, 200, song);
     });
 }

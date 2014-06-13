@@ -11,11 +11,11 @@ var vagalume = sources.vagalume;
 var darkLyrics = sources.darkLyrics;
 
 wikia.get(artist, song, callback);
-letras.get(artist, song, callback);
-vagalume.get(artist, song, callback);
+//letras.get(artist, song, callback);
+//vagalume.get(artist, song, callback);
 darkLyrics.get(artist, song, callback);
 
 function callback(err, status, lyric) {
   lyric = lyric || 'Not Found!';
-  console.log(lyric.split('\n'), status);
+  console.log(lyric, status);
 }
