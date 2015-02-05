@@ -1,6 +1,6 @@
 {
   "name": "get-lyrics-api",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^0.17.0",
-    "request": "^2.36.0",
-    "model": "git+https://github.com/MarcosRava/model-structure"
+    "q": "^1.1.2",
+    "request": "^2.36.0"
   }
 }
